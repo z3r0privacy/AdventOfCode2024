@@ -1,6 +1,6 @@
 from math import log10, floor
 
-def try_solve(target, curr_val, r_nums):
+def try_solve(target:int, curr_val:int, r_nums:list[int]) -> bool:
     if curr_val > target: return False
     if len(r_nums) == 0:
         return curr_val == target
@@ -8,11 +8,11 @@ def try_solve(target, curr_val, r_nums):
     new_remain = r_nums[1:]
     return try_solve(target, curr_val+next_val, new_remain) or try_solve(target, curr_val*next_val, new_remain)
 
-def _combine(num1, num2):
+def _combine(num1:int, num2:int) -> int:
     mult = 10**(floor(log10(num2))+1)
     return num1*mult + num2
 
-def try_solve2(target, curr_val, r_nums):
+def try_solve2(target:int, curr_val:int, r_nums:list[int]) -> bool:
     if curr_val > target: return False
     if len(r_nums) == 0:
         return curr_val == target
